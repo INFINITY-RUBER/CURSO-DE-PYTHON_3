@@ -21,3 +21,12 @@ def pentagono():
 triangulo()
 cuadrado()
 pentagono()
+
+def figura(lados):
+   for i in range(lados):
+      flecha.forward(100)
+      flecha.left(360/lados)
+      print("grados", i)
+
+
+figura(int(input("¿Cúantos ciclos?\n")))
