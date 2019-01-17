@@ -1,8 +1,8 @@
-clients = 'Pablo, Ricardo, claudia, yenni' #creamos el string
+clients = 'Pablo,Ricardo,claudia,yenni' #creamos el string
 
 
 def create_client(client_name):
-	global clients  #Utilizamos global para definir que la variable es la globarl, es decir la que definimos con pablo y ricardo
+	global clients  # Utilizamos global para definir que la variable es la globarl, es decir la que definimos con pablo y ricardo
 
 	if client_name not in clients:
 		_add_coma()
@@ -35,6 +35,20 @@ def delete_client(client_name):
 	else:
 		print('client is not in clients list')
 
+def search_client(client_name):
+	global clients
+	clients_list = clients.split(',')
+
+	for client in clients_list:
+		
+		if client != client_name:
+			print(clients_list)
+			print(client)
+			print('buscar:', client_name)
+			continue 
+		else:
+			return True
+
 def _print_welcome():
 	 print('WELCOME TO PLATZI VENTAS')
 	 print('*' * 50)
@@ -42,6 +56,8 @@ def _print_welcome():
 	 print('[C]reate cliente')
 	 print('[U]pdate cliente')
 	 print('[D]elete cliente')
+	 print('[L]ist cliente')
+	 print('[S]earch cliente')
 
 def _get_cliente_name():
 	return input('what is the cliente name? ' + clients + '.. ')
@@ -63,5 +79,16 @@ if __name__ == '__main__': #funcion main
 		update_client_name = input('what is the updated client name ')
 		update_client(client_name, update_client_name)
 		list_clients()
+	elif command == 'L':
+		list_clients()
+	elif command == 'S':
+		client_name = _get_cliente_name()
+		found = search_client(client_name)
+
+		if found:
+			print('The client is in the client\'s list')
+		else:
+			print('The Client: {} is not our client\'s list'.format(client_name))
+
 	else:
 		print('invalid command')
