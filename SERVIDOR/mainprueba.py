@@ -1,3 +1,6 @@
+import sys
+
+
 clients = 'Pablo,Ricardo,claudia,yenni' #creamos el string
 
 
@@ -35,6 +38,7 @@ def delete_client(client_name):
 	else:
 		print('client is not in clients list')
 
+
 def search_client(client_name):
 	global clients
 	clients_list = clients.split(',')
@@ -60,7 +64,15 @@ def _print_welcome():
 	 print('[S]earch cliente')
 
 def _get_cliente_name():
-	return input('what is the cliente name? ' + clients + '.. ')
+	client_name = None # asigna como variable vacia
+	while not client_name: # espera hasta que escriva un cliente
+		client_name = input('what is the cliente name? ' + clients + '..:  ')
+		if client_name == 'exit': # si escribe exit se sale de book
+			client_name = None # asigna como variable vacia
+			break
+	if not client_name:
+			sys.exit()
+	return client_name
 
 if __name__ == '__main__': #funcion main
 	_print_welcome()
