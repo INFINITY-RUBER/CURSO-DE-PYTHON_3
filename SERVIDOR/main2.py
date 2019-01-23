@@ -1,5 +1,6 @@
 import sys
-
+# clase 25 se hace actualizacion el las entradas
+# con dicionario y ID 
 
 
 clients = [
